@@ -9,12 +9,12 @@ namespace GestoreEventi
     public class Evento
     {
         //Titolo
-        private string _Titolo = String.Empty;
-        public string Titolo
+        private string _TitoloEvento = String.Empty;
+        public string TitoloEvento
         {
             get
             {
-                return _Titolo;
+                return _TitoloEvento;
             }
             set
             {
@@ -23,7 +23,7 @@ namespace GestoreEventi
                     throw new Exception("Il Titolo non può essere vuoto");
                 }
 
-                this._Titolo = value;
+                this._TitoloEvento = value;
             }
         }
         // Data
@@ -79,9 +79,9 @@ namespace GestoreEventi
         
         // Costruttore
 
-        public Evento(string titolo, DateTime data, int capienzaMax, int postiPrenotati = 0)
+        public Evento(string titoloEvento, DateTime data, int capienzaMax, int postiPrenotati = 0)
         {
-            this.Titolo = titolo;
+            this.TitoloEvento = titoloEvento;
             this.Data = data;
             this.CapienzaMax = capienzaMax;
         }
@@ -116,7 +116,7 @@ namespace GestoreEventi
         public override string ToString()
         {
             string DataFormattata = this.Data.ToString("dd/MM/yyyy");
-            return $"{DataFormattata} - {this.Titolo}" ;
+            return $"{DataFormattata} - {this.TitoloEvento}" ;
         }
     }
 }
