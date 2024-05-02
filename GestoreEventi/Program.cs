@@ -4,67 +4,65 @@
     {
         static void Main(string[] args)
         {
+      
+
             try
             {
-                Console.WriteLine("inserisci il nome dell'evento:");
-                string titolo = Console.ReadLine();
 
-                Console.WriteLine("inserisci la data dell'evento (gg/mm/yyyy):");
-                DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                Console.WriteLine("inserisci il nome del tuo programma Eventi:");
+                string titoloProgramma = Console.ReadLine();
 
-                Console.WriteLine("inserisci il numero di posti totali:");
-                int capienzaMax = Convert.ToInt32(Console.ReadLine());
+                ProgrammaEventi programmaEventi = new ProgrammaEventi(titoloProgramma);
 
-                // Istanzio evento
-                Evento eventoProva = new Evento(titolo,data,capienzaMax);
+                Console.WriteLine("");
+                Console.WriteLine("Quanti eventi vuoi aggiungere?");
+                int numEventi = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("");
 
-                Console.WriteLine();
-                Console.WriteLine("Quanti posti desideri prenotare?");
-                int posti = Convert.ToInt32(Console.ReadLine());
-                eventoProva.PrenotaPosti(posti);
-                int postiPrenotati = eventoProva.PostiPrenotati;
-                int postiDisponibili = capienzaMax - postiPrenotati;
-                Console.WriteLine();
-                Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
-                Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
-                Console.WriteLine(); 
-
-                bool loop = true;
-                while (loop)
+                for (int i = 0; i < numEventi; i++)
                 {
-                    Console.WriteLine("Vuoi disdire i posti? (si/no)");
-                    string check = Console.ReadLine();
-                    if (check == "si")
+                    try 
                     {
-                        Console.WriteLine("indica il numero di posti da disdire:");
-                        int posto = Convert.ToInt32(Console.ReadLine());
-                        eventoProva.Disdiciposti(posto);
-                        postiPrenotati = eventoProva.PostiPrenotati;
-                        postiDisponibili = capienzaMax - postiPrenotati;
-                        Console.WriteLine();
-                        Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
-                        Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
-                        Console.WriteLine();
+                        Console.WriteLine($"Inserisci il nome dell'evento {i + 1}:");
+                        string titoloEvento = Console.ReadLine();
 
+                        Console.WriteLine("Inserisci la data dell'evento (gg/mm/yyyy):");
+                        DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+
+                        Console.WriteLine("Inserisci il numero di posti totali:");
+                        int capienzaMax = Convert.ToInt32(Console.ReadLine());
+
+                        Evento evento = new Evento(titoloEvento, data, capienzaMax);
+
+                        programmaEventi.AggiungiEvento(evento);
+
+                        Console.WriteLine("");
                     }
-                    else if (check == "no")
+
+                    catch (Exception e)
                     {
-                        loop = false;
-                        Console.WriteLine();
-                        Console.WriteLine("Ok; Va bene!"); 
-                        Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
-                        Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
-                        Console.WriteLine();
-                    }
-                    else
-                    {
-                        throw new Exception("Inserisci una risposta valida");
+                        Console.WriteLine(e.Message);
+                        i--;
                     }
                 }
+
+                Console.WriteLine($"Numero di eventi nel programma è: {programmaEventi.EventiPresenti()}");
+
+                Console.WriteLine("Lista di eventi nel programma:");
+                Console.WriteLine(programmaEventi.ToString());
+
+                Console.WriteLine("Inserisci una data per vedere che eventi ci saranno (gg/mm/yyyy):");
+                DateTime dataInput = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                List<Evento> eventiInData = programmaEventi.CercaPerData(dataInput);
+                Console.WriteLine($"Eventi in data {dataInput.Date}:");
+                Console.WriteLine(ProgrammaEventi.StampaLista(eventiInData));
+
+                programmaEventi.SvuotaLista();
+                Console.WriteLine("Lista di eventi nel programma svuotata");
             }
             catch (Exception e)
             { 
-               Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message);
             }
         }
     }

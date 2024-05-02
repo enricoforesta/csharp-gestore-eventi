@@ -48,7 +48,7 @@ namespace GestoreEventi
             }
             return result;
         }
-        public int EventiPresenti() {  return NuovoEvento.Count + 1; }
+        public int EventiPresenti() {  return NuovoEvento.Count; }
 
         public void SvuotaLista()
         {
