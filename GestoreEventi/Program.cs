@@ -18,13 +18,16 @@
                 // Istanzio evento
                 Evento eventoProva = new Evento(titolo,data,capienzaMax);
 
+                Console.WriteLine();
                 Console.WriteLine("Quanti posti desideri prenotare?");
                 int posti = Convert.ToInt32(Console.ReadLine());
                 eventoProva.PrenotaPosti(posti);
                 int postiPrenotati = eventoProva.PostiPrenotati;
                 int postiDisponibili = capienzaMax - postiPrenotati;
+                Console.WriteLine();
                 Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
                 Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
+                Console.WriteLine();
 
                 bool loop = true;
                 while (loop)
@@ -38,16 +41,20 @@
                         eventoProva.Disdiciposti(posto);
                         postiPrenotati = eventoProva.PostiPrenotati;
                         postiDisponibili = capienzaMax - postiPrenotati;
+                        Console.WriteLine();
                         Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
                         Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
+                        Console.WriteLine();
 
                     }
                     else if (check == "no")
                     {
                         loop = false;
+                        Console.WriteLine();
                         Console.WriteLine("Ok; Va bene!"); 
                         Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
                         Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
+                        Console.WriteLine();
                     }
                     else
                     {
