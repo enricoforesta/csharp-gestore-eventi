@@ -79,11 +79,10 @@ namespace GestoreEventi
         
         // Costruttore
 
-        public Evento(string titolo, DateTime data, int postiPrenotati, int capienzaMax = 0)
+        public Evento(string titolo, DateTime data, int capienzaMax, int postiPrenotati = 0)
         {
             this.Titolo = titolo;
             this.Data = data;
-            this.PostiPrenotati = postiPrenotati;
             this.CapienzaMax = capienzaMax;
         }
 
