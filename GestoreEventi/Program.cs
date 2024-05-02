@@ -27,7 +27,7 @@
                 Console.WriteLine();
                 Console.WriteLine($"Numero di posti prenotati: {postiPrenotati}");
                 Console.WriteLine($"Numero di posti disponibili:{postiDisponibili}");
-                Console.WriteLine();
+                Console.WriteLine(); 
 
                 bool loop = true;
                 while (loop)
