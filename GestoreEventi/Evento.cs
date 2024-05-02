@@ -18,11 +18,6 @@ namespace GestoreEventi
             }
             set
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Il Titolo non può essere vuoto");
-                }
-
                 this._TitoloEvento = value;
             }
         }
@@ -36,10 +31,7 @@ namespace GestoreEventi
             }
             set
             {
-                if (value < DateTime.Now)
-                {
-                    throw new Exception("La Data non è valida, inserire una data valida");
-                }
+                
                 this._Data = value;
             }
         }
@@ -54,11 +46,6 @@ namespace GestoreEventi
             }
             private set
             {
-                if(value < 0)
-                {
-                    throw new Exception("Inserire Un numero Positivo");
-
-                }
                 this._CapienzaMax = value;
             }
         }
@@ -81,6 +68,7 @@ namespace GestoreEventi
 
         public Evento(string titoloEvento, DateTime data, int capienzaMax, int postiPrenotati = 0)
         {
+            
             this.TitoloEvento = titoloEvento;
             this.Data = data;
             this.CapienzaMax = capienzaMax;

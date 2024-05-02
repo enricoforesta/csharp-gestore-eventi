@@ -15,13 +15,17 @@ namespace GestoreEventi
             { return this._TitoloProgramma; }
 
             set
-            { this._TitoloProgramma = value; }
+
+            {
+                
+                this._TitoloProgramma = value; }
         }
         List<Evento> NuovoEvento;
 
         public ProgrammaEventi(string titoloProgramma)
 
         {
+           
             this.TitoloProgramma = titoloProgramma;
             this.NuovoEvento = new List<Evento>();
         }
